@@ -1,0 +1,11 @@
+AS11M 01.05  Fri Mar 29, 2019 16:01  loop1.lst
+
+0001 e000                        		ORG		$E000
+0002 e000 b6 10 05               LOOP	LDAA	$1005 ;read pins on Port C
+0003 e003 b7 10 04               		STAA	$1004 ;write data to Port B
+0004 e006 20 f8                  		BRA		LOOP
+0005                             		
+
+
+Number of errors 0
+Number of warnings 0

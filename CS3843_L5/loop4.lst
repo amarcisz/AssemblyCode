@@ -1,0 +1,24 @@
+AS11M 01.05  Fri Mar 29, 2019 18:09  loop4.lst
+
+0001 e000                        		ORG $E000
+0002 e000 ce 01 00               		LDX		#$0100
+0003 e003 35                     		TXS 			;sets SP to $00FF
+0004 e004 0e                     		CLI		
+0005 e005 c3 00 01               LOOP 	ADDD	#1	
+0006 e008 20 fb                  		BRA 	LOOP
+0007                             
+0008 e100                        		ORG 	$E100
+0009 e100 3c                     		PSHX
+0010 e101 b6 10 05               		LDAA	$1005	;read pins on Port C
+0011 e104 b7 10 04               		STAA	$1004	;write data to Port B
+0012 e107 38                     		PULX
+0013 e108 3b                     		RTI
+0014                             		;interrupt service
+0015                             
+0016 fff2                        		ORG 	$FFF2
+0017 fff2 e1                     		FCB 	$E1		;interrupt vector for IRQ interrupt
+0018 fff3 00                     		FCB		$00 	;Note $E100 is the starting address of the interrupt service routine
+
+
+Number of errors 0
+Number of warnings 0

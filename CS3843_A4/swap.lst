@@ -1,0 +1,21 @@
+AS11M 01.05  Thu Apr 18, 2019 14:32  swap.lst
+
+0001 fff6                        		ORG	$FFF6
+0002 fff6 e1                     		FCB	$E1
+0003 fff7 00                     		FCB	$00
+0004                             
+0005 e000                        		ORG $E000
+0006 e000 8e 00 ff               		LDS #$FF 	;sets SP to $00FF	
+0007 e003 86 01                  		LDAA	#1
+0008 e005 c6 02                  		LDAB	#2
+0009 e007 3f                     		SWI
+0010 e008 01                     		NOP
+0011                             
+0012 e100                        		ORG	$E100
+0013 e100 97 f8                  		STAA	$F8
+0014 e102 d7 f9                  		STAB	$F9
+0015 e104 3b                     		RTI
+
+
+Number of errors 0
+Number of warnings 0

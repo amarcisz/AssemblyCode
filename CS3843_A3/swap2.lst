@@ -1,0 +1,50 @@
+AS11M 01.05  Thu Apr 18, 2019 13:59  swap2.lst
+
+0001 0000                                    ORG       $0000     
+0002 0000 99                     NUM1        FCB       $99       
+0003 0001 a0                     NUM2        FCB       $A0       
+0004                              
+0005 e000                                    ORG       $E000     
+0006 e000 8e ff ff                           LDS		  #$FFFF
+0007 e003 ce 00 00               			LDX       #NUM1     load the address of the first number
+0008                              
+0009 e006 3c                                 PSHX                push the address of NUM1 onto the stack
+0010 e007 ce 00 01                           LDX       #NUM2     load the address of the second number
+0011                              
+0012 e00a 3c                                 PSHX                push the address of NUM2 onto the stack
+0013 e00b bd e0 0f                           JSR       SWAP2
+0014 e00e 01                                 NOP       this is where your program ends
+0015                             ;
+0016                             ;
+0017 e00f 36                     SWAP2       PSHA
+0018 e010 37                     			PSHB
+0019 e011 3c                     			PSHX
+0020 e012 18 3c                  			PSHY
+0021                             			
+0022 e014 30                     			TSX
+0023                             						
+0024                             			
+0025 e015 1a ee 0a               			LDY		10,X
+0026 e018 18 e6 00               			LDAB	0,Y
+0027 e01b 1a ee 08               			LDY		8,X
+0028 e01e 18 a6 00               			LDAA	0,Y
+0029                             			
+0030 e021 18 e7 00               			STAB	0,Y
+0031 e024 1a ee 0a               			LDY		10,X
+0032 e027 18 a7 00               			STAA	0,Y
+0033                             
+0034 e02a 1a ee 06               			LDY		6,X
+0035 e02d 1a ef 07               			STY		7,X
+0036                             			
+0037 e030 18 38                  			PULY
+0038 e032 38                     			PULX
+0039 e033 33                     			PULB
+0040 e034 32                     			PULA
+0041                             			
+0042 e035 31                     			INS
+0043                             			
+0044 e036 39                     			RTS
+
+
+Number of errors 0
+Number of warnings 0

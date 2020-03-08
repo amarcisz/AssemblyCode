@@ -1,0 +1,18 @@
+AS11M 01.05  Fri Mar 15, 2019 17:32  8BitAdd.lst
+
+0001                             ; add two 8 bit numbers)
+0002                             ;
+0003 0000                         ORG $0000 start data at 0000
+0004 0000 02                     NUM1 FCB $02 reserve storage for the first number
+0005 0001 02                     NUM2 FCB $02 reserve storage for the second number
+0006 0002 00                     SUM8 FCB $00 reserve storage for the sum
+0007 e000                         ORG $E000 continue with program at E000
+0008 e000 96 00                   LDAA NUM1 load the first number
+0009 e002 d6 01                   LDAB NUM2 load the second number
+0010 e004 1b                      ABA
+0011 e005 97 02                   STAA SUM8
+0012 e007 01                      NOP this is where your program ends
+
+
+Number of errors 0
+Number of warnings 0

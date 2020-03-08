@@ -1,0 +1,23 @@
+AS11M 01.05  Thu Apr 18, 2019 16:36  16BitAdd.lst
+
+0001                             ; add two 8 bit numbers)
+0002                             ;
+0003 0000                         ORG $0000 start data at 0000
+0004 0000 3d                     NUM1 FCB $3D reserve storage for the first number
+0005 0001 ff                      FCB $FF
+0006 0002 55                     NUM2 FCB $55 reserve storage for the second number
+0007 0003 cc                      FCB $CC
+0008 0004 00                     SUM16 FCB $00 reserve storage for the sum
+0009 0005 00                      FCB $00
+0010 e000                         ORG $E000 continue with program at E000
+0011 e000 96 01                   LDAA NUM1+1 load the first number
+0012 e002 99 03                   ADCA NUM2+1
+0013 e004 97 05                   STAA SUM16+1
+0014 e006 d6 00                   LDAB NUM1
+0015 e008 d9 02                   ADCB NUM2
+0016 e00a d7 04                   STAB SUM16
+0017 e00c 01                      NOP this is where your program ends
+
+
+Number of errors 0
+Number of warnings 0

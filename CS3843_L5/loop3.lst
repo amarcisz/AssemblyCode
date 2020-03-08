@@ -1,0 +1,21 @@
+AS11M 01.05  Fri Mar 29, 2019 17:40  loop3.lst
+
+0001 e000                        		ORG		$E000
+0002 e000 ce 01 00               		LDX		#$0100
+0003 e003 35                     		TXS				;sets SP to $00FF
+0004                             		
+0005 e004 b6 10 08               LOOP	LDAA	$1008
+0006 e007 47                     		ASRA
+0007 e008 24 fa                  		BCC		LOOP
+0008 e00a bd e0 0f               		JSR		COPY
+0009 e00d 20 f5                  		BRA		LOOP
+0010                             		
+0011 e00f 36                     COPY	PSHA			;save accumulator A
+0012 e010 b6 10 05               		LDAA	$1005	;read pins on Port C
+0013 e013 b7 10 04               		STAA	$1004	;write data to Port B
+0014 e016 32                     		PULA			;restore accumulator A
+0015 e017 39                     		RTS
+
+
+Number of errors 0
+Number of warnings 0

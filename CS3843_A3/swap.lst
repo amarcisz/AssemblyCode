@@ -1,0 +1,24 @@
+AS11M 01.05  Tue Mar 26, 2019 17:18  swap.lst
+
+0001 0000                                       ORG      $0000    start data at 0000
+0002 0000 99                     NUM1           FCB      $99      reserve storage for the first number
+0003 0001 a0                     NUM2           FCB      $A0      reserve storage for the second number
+0004                              
+0005 e000                                       ORG      $E000    continue with program at E000
+0006 e000 ce 00 00                              LDX      #NUM1    load the address of the first number
+0007 e003 18 ce 00 01                           LDY      #NUM2    load the address of the second number
+0008                              
+0009 e007 bd e0 0b                              JSR      SWAP1    call the subroutine SWAP
+0010 e00a 01                                    NOP              this is where your program ends
+0011                             ;
+0012                             ;
+0013 e00b a6 00                  SWAP1		   LDAA		0,X
+0014 e00d 18 e6 00               			   LDAB		0,Y
+0015                             			   
+0016 e010 18 a7 00               			   STAA		0,Y
+0017 e013 e7 00                  			   STAB		0,X
+0018 e015 39                     			   RTS
+
+
+Number of errors 0
+Number of warnings 0
